@@ -8,7 +8,8 @@ var cors = require('cors')
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}))
 
-let connectionString = `mongodb+srv://kgrvaidya:kgrvaidya123@cluster0.kykmb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+// let connectionString = `mongodb+srv://kgrvaidya:kgrvaidya123@cluster0.kykmb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+let connectionString = 'mongodb://localhost/myapp'
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => { console.log('connected to db')})
 .catch((error) => { console.log(error) })
@@ -45,7 +46,7 @@ app.get('/api/getData', (req,res,next) => {
 	.then((data) => {
 		res.send(data)
 	})
-	.catch((err) => res.send('Error : ',err))
+	.catch((err) => res.status(500).send('Error : ',err))
 
 })
 

@@ -37,7 +37,6 @@ const consume = async () => {
 }
 
 const saveMessage = async (message) => {
-
 	try {
 		let data = new KafkaScheme({
 			ticketNo : message.ticketNo,
